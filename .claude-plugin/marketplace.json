@@ -1,0 +1,25 @@
+{
+  "name": "nim",
+  "owner": {
+    "name": "Nim",
+    "url": "https://nim.video"
+  },
+  "description": "Nim skills for image & video generation and creative ideation, via the Nim MCP.",
+  "plugins": [
+    {
+      "name": "nim",
+      "displayName": "Nim",
+      "description": "Generate images and videos and run templated creative workflows with Nim through MCP.",
+      "version": "0.1.0",
+      "source": "./plugins/nim",
+      "category": "creative",
+      "tags": [
+        "nim",
+        "mcp",
+        "image-generation",
+        "video-generation",
+        "ideation"
+      ]
+    }
+  ]
+}

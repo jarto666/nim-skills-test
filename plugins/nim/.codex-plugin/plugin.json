@@ -1,0 +1,43 @@
+{
+  "name": "nim",
+  "version": "0.1.0",
+  "description": "Generate images and videos and run templated creative workflows with Nim — model discovery, direct generation, and reference-driven editing through the Nim MCP.",
+  "author": {
+    "name": "Nim",
+    "url": "https://nim.video"
+  },
+  "homepage": "https://nim.video",
+  "repository": "https://github.com/nim-video/skills",
+  "license": "MIT",
+  "keywords": [
+    "nim",
+    "mcp",
+    "image-generation",
+    "video-generation",
+    "img2vid",
+    "ideation",
+    "creative",
+    "ai-video",
+    "ai-image"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Nim",
+    "shortDescription": "Generate images and videos with Nim",
+    "longDescription": "Nim turns your agent into a creative studio: discover the right model, generate images and video, edit from references, and run templated workflows — all through the Nim MCP.",
+    "developerName": "Nim",
+    "category": "Creativity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://nim.video",
+    "defaultPrompt": [
+      "Generate a cinematic product shot with Nim",
+      "Turn this image into a 5-second video with Nim",
+      "Create a 9:16 social ad for my brand with Nim",
+      "Give me 4 concept variations for this idea with Nim"
+    ],
+    "brandColor": "#FE28A7",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png"
+  }
+}

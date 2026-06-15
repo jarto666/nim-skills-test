@@ -10,8 +10,8 @@ generation and ideation — discover the right model, generate images and video,
 from references, and run templated creative workflows, all from your agent through the
 [Nim MCP](https://nim.video).
 
-Works with **Claude Code** and **Codex** today; the same `SKILL.md` skills are designed
-to extend to more agents.
+Works with **Claude Code**, **Codex**, and **Cursor** today; the same `SKILL.md` skills
+are designed to extend to more agents.
 
 ## Install
 
@@ -40,6 +40,22 @@ registered on install; you'll complete Nim authentication on first use.
 > # ~/.codex/config.toml
 > [mcp_servers.nim]
 > url = "https://mcp.nim.video/mcp"
+> ```
+
+### Cursor
+
+Install **Nim** from the Cursor plugin marketplace (Settings → Plugins). The bundled
+Nim MCP server is registered with the plugin; you'll authenticate with Nim on first use.
+
+> Prefer to wire the MCP server yourself (no plugin)? Add it directly in
+> Cursor's MCP settings:
+>
+> ```json
+> {
+>   "mcpServers": {
+>     "Nim": { "url": "https://mcp.nim.video/mcp" }
+>   }
+> }
 > ```
 
 ## Skills

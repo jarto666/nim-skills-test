@@ -47,6 +47,8 @@ discovery is shared, and the only real branch is image vs. video.
    - Call `media_upload`, run the returned `curl_example` against the local path or
      Claude attachment, then pass the response `file_url` in `fileInputs`.
    - Never pass a local filesystem path straight to a generation tool.
+   - If the file is not actually readable by the agent, follow
+     [Reference upload troubleshooting](#reference-upload-troubleshooting).
 3. **Generate.** Call `generate_image` or `generate_video` and pass **only** params the
    `generationContract` allows. Submit `model_name` alongside `model_id` for clearer
    user-facing status.
@@ -82,6 +84,19 @@ Pass a param only when the selected model's `generationContract` lists it.
 | `fps`, `keepSound` | video | Only when the model supports them. |
 | `seed` | both | Omit or `-1` to randomize; reuse a value to reproduce. |
 | `batchSize` | both | 1–4 variations in one call. Use for ideation / options. |
+
+## Reference upload troubleshooting
+
+- Never pass local filesystem paths directly to `generate_image` or
+  `generate_video`; use `media_upload` and pass the returned `file_url`.
+- In Claude Cowork, paths from the user's computer are usually not readable by
+  the agent. If a referenced file cannot be read, ask the user to add it to the
+  current Cowork chat as a Source/attachment, or provide a public/direct URL.
+- Inline previews or images visible in chat are not always uploadable files. If
+  no actual file path/attachment/source is available, ask for one before upload.
+- If `media_upload` returns an upload URL but the actual upload is blocked by
+  network egress or CSP, tell the user to add the Nim MCP server/domain from
+  `https://nim.video/mcp` to their allowlist, then retry.
 
 ## Variations & ideation
 

@@ -23,8 +23,8 @@ Create controlled product/lifestyle b-roll videos from a brief and reference ima
 
 - Images that should be used as visual references must be attachments or accessible local files. Inline-only visible images are not enough for upload.
 - If the user expects an inline-only image to be used, ask them to attach it as a file or provide a local path/URL. Do not pretend it was uploaded.
-- In Claude Cowork, paths from the user's computer are usually not readable by the agent. If a referenced file cannot be read, ask the user to add it to the current Cowork chat as a Source/attachment, or provide a public/direct URL.
-- If `media_upload` returns an upload URL but the actual upload is blocked by network egress or CSP, tell the user to add the Nim MCP server/domain from `https://nim.video/mcp` to their allowlist, then retry.
+- In Claude Cowork, paths from the user's computer are usually not readable by the agent. If a referenced file cannot be read, stop and ask the user to add it to the current Cowork Working folder, then retry from that accessible file.
+- If `media_upload` returns an upload URL but the actual upload is blocked by DNS, network egress, CSP, sandboxing, or allowlist restrictions, stop. Do not try alternate domains, proxy URLs, guessed endpoints, custom upload formats, or invented `fileInputs` values such as `upload:/path`, local paths, or placeholder URLs. Tell the user to add `*.nim.video` to their allowlist; the setup page is `https://nim.video/mcp`. Retry only after they confirm the environment is fixed.
 - If no reference image is available for a role, continue prompt-only for that role when the user approves or says they have no more assets.
 - Never let attachment order silently define creative meaning. The internal `reference_map` is canonical.
 - The prompt labels and Nim `fileInputs` order must match the internal `reference_map` exactly.

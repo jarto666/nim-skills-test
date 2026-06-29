@@ -58,18 +58,22 @@ apps or hand-built HTML.
    `workflowId` / `promptId` until `finished`, `failed`, or `cancelled`, then
    deliver only the real final media URL(s).
 
-## Reference Upload Troubleshooting
+## Reference Upload Hard Stops
 
 - Never pass local filesystem paths directly to `run_template`; use
   `media_upload` and pass the returned `file_url`.
 - In Claude Cowork, paths from the user's computer are usually not readable by
-  the agent. If a file cannot be read, ask the user to add it to the current
-  Cowork chat as a Source/attachment, or provide a public/direct URL.
+  the agent. If a file cannot be read, stop and ask the user to add it to the
+  current Cowork Working folder, then retry from that accessible file.
 - Inline previews or images visible in chat are not always uploadable files. If
   no actual file path/attachment/source is available, ask for one before upload.
 - If `media_upload` returns an upload URL but the actual upload is blocked by
-  network egress or CSP, tell the user to add the Nim MCP server/domain from
-  `https://nim.video/mcp` to their allowlist, then retry.
+  DNS, network egress, CSP, sandboxing, or allowlist restrictions, stop. Do not
+  try alternate domains, proxy URLs, guessed endpoints, custom upload formats,
+  or invented `fileInputs` values such as `upload:/path`, local paths, or
+  placeholder URLs. Tell the user to add `*.nim.video` to their allowlist; the
+  setup page is `https://nim.video/mcp`. Retry only after they confirm the
+  environment is fixed.
 
 ## Failure Handling
 
